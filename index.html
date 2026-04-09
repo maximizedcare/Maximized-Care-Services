@@ -1,0 +1,1496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Maximized Care Services LLC</title>
+  <meta name="description" content="Maximized Care Services LLC provides PT, OT, and SLP coverage support for agencies across New York City and surrounding areas." />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --navy: #061220;
+      --navy-2: #0d2240;
+      --navy-3: #102b52;
+      --blue: #2384dd;
+      --cyan: #67d2ff;
+      --teal: #2fb8be;
+      --purple: #8b5cf6;
+      --green: #10b981;
+      --text: #0f172a;
+      --muted: #64748b;
+      --line: #dbe7f2;
+      --card: #ffffff;
+      --shadow: 0 18px 50px rgba(15,23,42,.10);
+      --radius: 24px;
+      --max: 1180px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body {
+      margin: 0;
+      font-family: "Inter", Arial, sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, #fbfdff 0%, #eef5fb 100%);
+      overflow-x: hidden;
+    }
+    img { max-width: 100%; display: block; }
+    a { text-decoration: none; color: inherit; }
+    button, input, textarea, select { font: inherit; }
+
+    .container {
+      width: min(var(--max), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .header {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: rgba(6, 18, 32, 0.82);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,.08);
+      transition: .3s ease;
+    }
+
+    .nav {
+      min-height: 84px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .nav-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 0;
+    }
+
+    .nav-logo-wrap {
+      background: #fff;
+      padding: 8px 12px;
+      border-radius: 18px;
+      box-shadow: 0 10px 26px rgba(0,0,0,.18);
+      flex-shrink: 0;
+    }
+
+    .nav-logo-wrap img { height: 42px; width: auto; }
+
+    .nav-copy strong {
+      display: block;
+      color: #fff;
+      font-size: 15px;
+      line-height: 1.2;
+    }
+
+    .nav-copy span {
+      display: block;
+      margin-top: 2px;
+      color: #9eb3c8;
+      font-size: 11px;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 24px;
+      color: #dbe7f3;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    .nav-links a {
+      position: relative;
+      transition: .25s ease;
+    }
+
+    .nav-links a::after {
+      content: "";
+      position: absolute;
+      left: 0;
+      bottom: -8px;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--cyan), var(--blue));
+      transition: .25s ease;
+    }
+
+    .nav-links a:hover { color: #fff; }
+    .nav-links a:hover::after { width: 100%; }
+
+    .btn,
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      min-height: 50px;
+      padding: 0 22px;
+      border-radius: 14px;
+      border: none;
+      cursor: pointer;
+      font-weight: 700;
+      transition: transform .25s ease, box-shadow .25s ease, background .25s ease;
+    }
+
+    .nav-cta {
+      color: #fff;
+      background: linear-gradient(135deg, rgba(47,184,190,.18), rgba(35,132,221,.18));
+      border: 1px solid rgba(255,255,255,.12);
+    }
+
+    .btn:hover,
+    .nav-cta:hover {
+      transform: translateY(-2px);
+    }
+
+    .hero {
+      position: relative;
+      overflow: hidden;
+      background:
+        radial-gradient(circle at 85% 18%, rgba(103, 210, 255, .14), transparent 24%),
+        radial-gradient(circle at 12% 82%, rgba(139, 92, 246, .14), transparent 24%),
+        linear-gradient(160deg, #020917 0%, #091a34 38%, #102b52 72%, #143d7a 100%);
+      color: #fff;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(255,255,255,.04) 1px, transparent 1px);
+      background-size: 70px 70px;
+      opacity: .16;
+      pointer-events: none;
+    }
+
+    .hero-particles {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events: none;
+    }
+
+    .hero-particles span {
+      position: absolute;
+      display: block;
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: rgba(103,210,255,.35);
+      box-shadow: 0 0 20px rgba(103,210,255,.4);
+      animation: float 16s linear infinite;
+    }
+
+    .hero-particles span:nth-child(1) { top: 18%; left: 12%; animation-duration: 18s; }
+    .hero-particles span:nth-child(2) { top: 30%; left: 82%; animation-duration: 12s; width: 6px; height: 6px; }
+    .hero-particles span:nth-child(3) { top: 72%; left: 18%; animation-duration: 17s; }
+    .hero-particles span:nth-child(4) { top: 64%; left: 72%; animation-duration: 14s; width: 10px; height: 10px; }
+    .hero-particles span:nth-child(5) { top: 48%; left: 52%; animation-duration: 20s; width: 5px; height: 5px; }
+
+    .ring {
+      position: absolute;
+      border-radius: 50%;
+      border: 1px solid rgba(103,210,255,.12);
+      pointer-events: none;
+      animation: floatRing 18s ease-in-out infinite;
+    }
+
+    .ring-1 { width: 420px; height: 420px; top: 8%; right: -6%; }
+    .ring-2 { width: 260px; height: 260px; bottom: 12%; left: 4%; animation-duration: 14s; }
+    .ring-3 { width: 170px; height: 170px; top: 38%; left: 18%; animation-duration: 20s; }
+
+    .hero-inner {
+      position: relative;
+      z-index: 2;
+      min-height: calc(100vh - 84px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 78px 0 92px;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      padding: 8px 15px;
+      border-radius: 999px;
+      background: rgba(47,184,190,.10);
+      border: 1px solid rgba(47,184,190,.20);
+      color: #dffbfd;
+      font-size: 12px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .12em;
+      margin-bottom: 22px;
+      opacity: 0;
+      transform: translateY(18px);
+      animation: fadeUp .7s ease forwards;
+    }
+
+    .eyebrow::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #70e3e7, #bdfcff);
+      box-shadow: 0 0 0 5px rgba(112,227,231,.12);
+    }
+
+    .hero-logo {
+      max-width: 560px;
+      margin: 0 auto 18px;
+      padding: 18px;
+      border-radius: 30px;
+      border: 1px solid rgba(255,255,255,.08);
+      background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
+      box-shadow: 0 20px 70px rgba(0,0,0,.24);
+      opacity: 0;
+      transform: translateY(22px);
+      animation: fadeUp .8s .15s ease forwards;
+    }
+
+    .hero-logo img { border-radius: 18px; }
+
+    h1 {
+      margin: 0 auto 18px;
+      max-width: 900px;
+      font-family: "Sora", sans-serif;
+      font-size: clamp(42px, 7vw, 76px);
+      line-height: .98;
+      letter-spacing: -.045em;
+    }
+
+    .line {
+      display: inline-block;
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeUp .7s ease forwards;
+    }
+
+    .line-1 { animation-delay: .25s; }
+    .line-2 { animation-delay: .45s; }
+
+    .accent {
+      background: linear-gradient(90deg, #8feff4, #58c5ff, #c4b5fd, #8feff4);
+      background-size: 300% 100%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      animation: shimmer 6s ease-in-out infinite;
+    }
+
+    .hero-copy {
+      max-width: 770px;
+      margin: 0 auto;
+      color: #c4d5e8;
+      font-size: 18px;
+      line-height: 1.8;
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeUp .7s .65s ease forwards;
+    }
+
+    .hero-actions {
+      margin-top: 30px;
+      display: flex;
+      justify-content: center;
+      gap: 18px;
+      flex-wrap: wrap;
+      opacity: 0;
+      transform: translateY(24px);
+      animation: fadeUp .7s .85s ease forwards;
+    }
+
+    .btn-primary {
+      color: #fff;
+      background: linear-gradient(135deg, var(--blue), #1d4ed8);
+      box-shadow: 0 14px 36px rgba(35,132,221,.35);
+    }
+
+    .btn-secondary {
+      color: #fff;
+      background: rgba(255,255,255,.08);
+      border: 1px solid rgba(255,255,255,.14);
+      box-shadow: inset 0 1px 0 rgba(255,255,255,.08);
+    }
+
+    .hero-stats {
+      max-width: 940px;
+      margin: 42px auto 0;
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      border-radius: 22px;
+      overflow: hidden;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.10);
+      backdrop-filter: blur(12px);
+      opacity: 0;
+      transform: translateY(24px) scale(.98);
+      animation: fadeUpScale .8s 1.05s ease forwards;
+    }
+
+    .stat-cell {
+      padding: 26px 20px;
+      text-align: center;
+      border-right: 1px solid rgba(255,255,255,.08);
+    }
+
+    .stat-cell:last-child { border-right: none; }
+
+    .stat-cell strong {
+      display: block;
+      font-family: "Sora", sans-serif;
+      font-size: 30px;
+      margin-bottom: 6px;
+    }
+
+    .stat-cell span {
+      font-size: 13px;
+      color: #b7c8dc;
+    }
+
+    .scroll-hint {
+      position: absolute;
+      left: 50%;
+      bottom: 34px;
+      transform: translateX(-50%);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 8px;
+      opacity: 0;
+      animation: fadeUp .6s 1.4s ease forwards;
+    }
+
+    .scroll-hint small {
+      color: rgba(255,255,255,.55);
+      text-transform: uppercase;
+      letter-spacing: .18em;
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .scroll-line {
+      width: 1px;
+      height: 40px;
+      background: rgba(255,255,255,.12);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .scroll-line::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: 0;
+      width: 100%;
+      height: 55%;
+      background: linear-gradient(180deg, transparent, var(--cyan));
+      animation: scrollDown 2.2s ease-in-out infinite;
+    }
+
+    section { padding: 110px 0; }
+
+    .section-head {
+      max-width: 740px;
+      margin-bottom: 42px;
+    }
+
+    .tag {
+      display: inline-block;
+      margin-bottom: 16px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #e8f5fb;
+      color: var(--teal);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    h2 {
+      margin: 0 0 14px;
+      font-family: "Sora", sans-serif;
+      font-size: clamp(32px, 4vw, 48px);
+      line-height: 1.05;
+      letter-spacing: -.03em;
+    }
+
+    .section-head p,
+    .lead {
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.8;
+    }
+
+    .cards {
+      display: grid;
+      gap: 24px;
+    }
+
+    .cards.three { 
+      grid-template-columns: repeat(3, 1fr);
+      align-items: stretch;
+    }
+
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: var(--radius);
+      padding: 32px;
+      box-shadow: var(--shadow);
+      transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .card:hover {
+      transform: translateY(-6px);
+    }
+
+    .card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      border-radius: inherit;
+      opacity: 0;
+      transition: opacity .25s ease;
+      pointer-events: none;
+    }
+
+    .icon {
+      width: 58px;
+      height: 58px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      color: #fff;
+      font-weight: 800;
+      margin-bottom: 18px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .pt { background: linear-gradient(135deg, #17b67a, #0b8f60); }
+    .ot { background: linear-gradient(135deg, #2c8cff, #2261df); }
+    .slp { background: linear-gradient(135deg, #9b6bff, #7c3aed); }
+
+    .card h3,
+    .card p,
+    .card ul,
+    .card .tag {
+      position: relative;
+      z-index: 1;
+    }
+
+    .card h3 { margin: 0 0 12px; font-size: 22px; }
+    .card p { margin: 0 0 18px; color: var(--muted); line-height: 1.75; }
+
+    .card ul {
+      margin: 0;
+      padding-left: 0;
+      list-style: none;
+      color: #324456;
+      line-height: 1.9;
+    }
+
+    .card ul li {
+      position: relative;
+      padding-left: 30px;
+      margin-bottom: 10px;
+    }
+
+    .card ul li::before {
+      content: "";
+      position: absolute;
+      left: 0;
+      top: 2px;
+      width: 18px;
+      height: 18px;
+      border-radius: 999px;
+      background-size: 10px 10px;
+      background-repeat: no-repeat;
+      background-position: center;
+      box-shadow: 0 6px 14px rgba(15,23,42,.08);
+    }
+
+    .pt-list li::before {
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E"),
+        linear-gradient(135deg, #17b67a, #0b8f60);
+    }
+    .ot-list li::before {
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E"),
+        linear-gradient(135deg, #2c8cff, #2261df);
+    }
+    .slp-list li::before {
+      background-image:
+        url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='10' height='10' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M20 6L9 17l-5-5'/%3E%3C/svg%3E"),
+        linear-gradient(135deg, #9b6bff, #7c3aed);
+    }
+
+    .service-grid .card {
+      display: grid;
+      grid-template-rows: auto auto 1fr auto;
+      height: 100%;
+    }
+
+    .service-grid .card p {
+      min-height: 116px;
+    }
+
+    .service-grid .card ul {
+      min-height: 124px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      justify-content: flex-start;
+    }
+
+    .service-card.pt-card::before {
+      background: radial-gradient(circle at top right, rgba(23,182,122,.14), transparent 45%);
+    }
+
+    .service-card.ot-card::before {
+      background: radial-gradient(circle at top right, rgba(44,140,255,.14), transparent 45%);
+    }
+
+    .service-card.slp-card::before {
+      background: radial-gradient(circle at top right, rgba(155,107,255,.14), transparent 45%);
+    }
+
+    .service-card.pt-card:hover {
+      box-shadow: 0 24px 60px rgba(23,182,122,.14), 0 12px 30px rgba(15,23,42,.10);
+      border-color: rgba(23,182,122,.22);
+    }
+
+    .service-card.ot-card:hover {
+      box-shadow: 0 24px 60px rgba(44,140,255,.14), 0 12px 30px rgba(15,23,42,.10);
+      border-color: rgba(44,140,255,.22);
+    }
+
+    .service-card.slp-card:hover {
+      box-shadow: 0 24px 60px rgba(155,107,255,.14), 0 12px 30px rgba(15,23,42,.10);
+      border-color: rgba(155,107,255,.22);
+    }
+
+    .service-card:hover::before {
+      opacity: 1;
+    }
+
+    .clinician-grid .card {
+      display: grid;
+      grid-template-rows: auto auto auto 1fr auto;
+      height: 100%;
+      background:
+        linear-gradient(#ffffff, #ffffff) padding-box,
+        linear-gradient(135deg, rgba(255,255,255,.85), rgba(219,231,242,.95)) border-box;
+      border: 1px solid transparent;
+    }
+
+    .clinician-grid .card p {
+      min-height: 60px;
+    }
+
+    .clinician-grid .card ul {
+      min-height: 120px;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+      gap: 8px;
+    }
+
+    .clinician-grid .card.pt-card::before {
+      background: radial-gradient(circle at top right, rgba(23,182,122,.18), transparent 45%);
+    }
+
+    .clinician-grid .card.ot-card::before {
+      background: radial-gradient(circle at top right, rgba(44,140,255,.18), transparent 45%);
+    }
+
+    .clinician-grid .card.slp-card::before {
+      background: radial-gradient(circle at top right, rgba(155,107,255,.18), transparent 45%);
+    }
+
+    .clinician-grid .card.pt-card:hover {
+      box-shadow: 0 24px 60px rgba(23,182,122,.16), 0 12px 30px rgba(15,23,42,.10);
+    }
+
+    .clinician-grid .card.ot-card:hover {
+      box-shadow: 0 24px 60px rgba(44,140,255,.16), 0 12px 30px rgba(15,23,42,.10);
+    }
+
+    .clinician-grid .card.slp-card:hover {
+      box-shadow: 0 24px 60px rgba(155,107,255,.16), 0 12px 30px rgba(15,23,42,.10);
+    }
+
+    .clinician-grid .card:hover::before {
+      opacity: 1;
+    }
+
+    .apply-btn {
+      width: 100%;
+      min-height: 48px;
+      border-radius: 14px;
+      border: none;
+      color: #fff;
+      font-weight: 700;
+      cursor: pointer;
+      transition: transform .25s ease, box-shadow .25s ease, opacity .25s ease;
+      align-self: end;
+    }
+
+    .apply-btn:hover {
+      transform: translateY(-2px);
+      opacity: .96;
+    }
+
+    .apply-btn.pt-btn { background: linear-gradient(135deg, #17b67a, #0b8f60); box-shadow: 0 12px 28px rgba(23,182,122,.28); }
+    .apply-btn.ot-btn { background: linear-gradient(135deg, #2c8cff, #2261df); box-shadow: 0 12px 28px rgba(44,140,255,.28); }
+    .apply-btn.slp-btn { background: linear-gradient(135deg, #9b6bff, #7c3aed); box-shadow: 0 12px 28px rgba(155,107,255,.28); }
+
+    .modal-overlay {
+      position: fixed;
+      inset: 0;
+      background: rgba(2, 10, 22, .68);
+      backdrop-filter: blur(10px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 2000;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity .25s ease;
+    }
+
+    .modal-overlay.open {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
+    .modal-card {
+      width: min(720px, 100%);
+      max-height: 90vh;
+      overflow-y: auto;
+      background: #fff;
+      border-radius: 28px;
+      border: 1px solid var(--line);
+      box-shadow: 0 30px 70px rgba(0,0,0,.24);
+      padding: 28px;
+      transform: translateY(16px) scale(.98);
+      transition: transform .25s ease;
+      position: relative;
+    }
+
+    .modal-overlay.open .modal-card {
+      transform: translateY(0) scale(1);
+    }
+
+    .modal-close {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 40px;
+      height: 40px;
+      border-radius: 999px;
+      border: 1px solid #dbe7f2;
+      background: #f8fbff;
+      cursor: pointer;
+      font-size: 20px;
+      line-height: 1;
+    }
+
+    .modal-header {
+      margin-bottom: 22px;
+      padding-right: 44px;
+    }
+
+    .modal-header h3 {
+      margin: 0 0 8px;
+      font-family: "Sora", sans-serif;
+      font-size: 30px;
+    }
+
+    .modal-header p {
+      margin: 0;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .modal-success {
+      display: none;
+      margin-top: 18px;
+      padding: 16px 18px;
+      border-radius: 16px;
+      background: #edf7ff;
+      color: #23517d;
+      font-weight: 600;
+    }
+
+    .modal-success.show { display: block; }
+
+    .alt {
+      background: linear-gradient(180deg, #eef5fb 0%, #f7fbff 100%);
+    }
+
+    .agency-grid,
+    .contact-grid,
+    .footer-grid {
+      display: grid;
+      gap: 30px;
+      align-items: start;
+    }
+
+    .agency-grid { grid-template-columns: 1.02fr .98fr; }
+    .contact-grid { grid-template-columns: .92fr 1.08fr; }
+    .footer-grid { grid-template-columns: 1.6fr 1fr 1fr; }
+
+    .steps {
+      display: grid;
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .step {
+      display: grid;
+      grid-template-columns: 64px 1fr;
+      gap: 18px;
+      align-items: start;
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      padding: 20px 22px;
+      box-shadow: var(--shadow);
+    }
+
+    .step-number {
+      width: 64px;
+      height: 64px;
+      border-radius: 18px;
+      display: grid;
+      place-items: center;
+      background: #e8f5fb;
+      color: var(--teal);
+      font-weight: 800;
+    }
+
+    .step h4 { margin: 0 0 8px; font-size: 19px; }
+    .step p { margin: 0; color: var(--muted); line-height: 1.7; }
+
+    .panel,
+    .contact-card,
+    .form {
+      background: #fff;
+      border: 1px solid var(--line);
+      border-radius: 28px;
+      padding: 30px;
+      box-shadow: var(--shadow);
+    }
+
+    .panel h3 { margin: 0 0 14px; font-size: 28px; font-family: "Sora", sans-serif; }
+    .panel p { color: var(--muted); line-height: 1.75; }
+
+    .checks {
+      display: grid;
+      gap: 12px;
+      margin: 22px 0 28px;
+    }
+
+    .checks div {
+      display: flex;
+      gap: 12px;
+      align-items: flex-start;
+      color: #324456;
+      line-height: 1.7;
+    }
+
+    .check {
+      width: 10px;
+      height: 10px;
+      flex: 0 0 10px;
+      border-radius: 999px;
+      margin-top: 8px;
+      background: linear-gradient(135deg, var(--teal), var(--blue));
+    }
+
+    .logo-plate {
+      background: #f8fbff;
+      border: 1px solid #e3edf6;
+      border-radius: 24px;
+      padding: 18px;
+      margin: 20px 0;
+    }
+
+    .logo-plate img {
+      width: 100%;
+      max-width: 340px;
+      margin: auto;
+    }
+
+    .contact-points {
+      display: grid;
+      gap: 16px;
+    }
+
+    .contact-points div {
+      background: #f8fbff;
+      border: 1px solid #e3edf6;
+      border-radius: 18px;
+      padding: 16px 18px;
+    }
+
+    .contact-points strong { display: block; margin-bottom: 6px; }
+    .contact-points span { color: var(--muted); line-height: 1.6; }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    label {
+      display: block;
+      font-size: 14px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    input,
+    textarea,
+    select {
+      width: 100%;
+      margin-top: 8px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      border: 1px solid #dbe7f2;
+      background: #f8fbff;
+      color: var(--text);
+      outline: none;
+      transition: border-color .2s ease, box-shadow .2s ease;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+      border-color: var(--blue);
+      box-shadow: 0 0 0 3px rgba(35,132,221,.12);
+    }
+
+    textarea {
+      resize: vertical;
+      min-height: 140px;
+    }
+
+    .notice {
+      margin-top: 16px;
+      padding: 14px 16px;
+      border-radius: 14px;
+      background: #edf7ff;
+      color: #23517d;
+      font-size: 14px;
+      display: none;
+    }
+
+    .notice.show { display: block; }
+
+    .footer {
+      background: #061120;
+      color: #fff;
+      padding: 66px 0 28px;
+    }
+
+    .footer-brand {
+      background: rgba(255,255,255,.05);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 26px;
+      padding: 18px;
+      max-width: 360px;
+      margin-bottom: 16px;
+    }
+
+    .footer-brand img { border-radius: 18px; }
+
+    .footer p,
+    .footer a,
+    .footer span {
+      color: #aabed2;
+      display: block;
+      margin-bottom: 10px;
+      line-height: 1.8;
+    }
+
+    .footer h4 {
+      margin: 0 0 12px;
+      font-size: 13px;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    .footer-bottom {
+      margin-top: 28px;
+      padding-top: 22px;
+      border-top: 1px solid rgba(255,255,255,.10);
+      color: #8da3bc;
+      font-size: 13px;
+    }
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(24px);
+      transition: opacity .7s ease, transform .7s ease;
+    }
+
+    .reveal.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    @keyframes fadeUp {
+      to { opacity: 1; transform: none; }
+    }
+
+    @keyframes fadeUpScale {
+      to { opacity: 1; transform: none scale(1); }
+    }
+
+    @keyframes shimmer {
+      0%, 100% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+    }
+
+    @keyframes scrollDown {
+      0% { top: -50%; }
+      100% { top: 150%; }
+    }
+
+    @keyframes float {
+      0% { transform: translateY(0) translateX(0); opacity: .2; }
+      50% { transform: translateY(-24px) translateX(10px); opacity: .9; }
+      100% { transform: translateY(-48px) translateX(-8px); opacity: 0; }
+    }
+
+    @keyframes floatRing {
+      0%, 100% { transform: translate(0,0) rotate(0deg); }
+      25% { transform: translate(20px,-30px) rotate(6deg); }
+      50% { transform: translate(-18px,20px) rotate(-4deg); }
+      75% { transform: translate(24px,10px) rotate(5deg); }
+    }
+
+    @media (max-width: 980px) {
+      .nav-links,
+      .nav-cta,
+      .nav-copy { display: none; }
+      .hero-stats,
+      .cards.three,
+      .agency-grid,
+      .contact-grid,
+      .footer-grid,
+      .form-grid { grid-template-columns: 1fr; }
+      .stat-cell {
+        border-right: none;
+        border-bottom: 1px solid rgba(255,255,255,.08);
+      }
+      .stat-cell:last-child { border-bottom: none; }
+    }
+
+    @media (max-width: 720px) {
+      .hero-inner { padding: 58px 0 78px; }
+      h1 { font-size: 42px; }
+      .hero-copy { font-size: 16px; }
+      section { padding: 88px 0; }
+      .card,
+      .panel,
+      .contact-card,
+      .form { padding: 22px; }
+      .hero-logo { padding: 12px; }
+      .step { grid-template-columns: 56px 1fr; padding: 18px; }
+      .step-number { width: 56px; height: 56px; }
+    }
+  </style>
+</head>
+<body>
+  <header class="header">
+    <div class="container nav">
+      <a href="#home" class="nav-brand">
+        <div class="nav-logo-wrap">
+          <img src="logo-light.png" alt="Maximized Care Services logo light" />
+        </div>
+        <div class="nav-copy">
+          <strong>Maximized Care Services LLC</strong>
+          <span>PT · OT · SLP Coverage Partner</span>
+        </div>
+      </a>
+
+      <nav class="nav-links">
+        <a href="#services">Services</a>
+        <a href="#agencies">For Agencies</a>
+        <a href="#clinicians">For Clinicians</a>
+        <a href="#contact">Contact</a>
+      </nav>
+
+      <a class="nav-cta" href="#contact">Request Coverage</a>
+    </div>
+  </header>
+
+  <section class="hero" id="home">
+    <div class="hero-particles">
+      <span></span><span></span><span></span><span></span><span></span>
+    </div>
+    <div class="ring ring-1"></div>
+    <div class="ring ring-2"></div>
+    <div class="ring ring-3"></div>
+
+    <div class="container hero-inner">
+      <div>
+        <div class="eyebrow">Trusted therapy coverage partner</div>
+
+        <div class="hero-logo">
+          <img src="logo-dark.png" alt="Maximized Care Services logo dark" />
+        </div>
+
+        <h1>
+          <span class="line line-1">Quality care.</span><br>
+          <span class="line line-2"><span class="accent">Maximized impact.</span></span>
+        </h1>
+
+        <p class="hero-copy">
+          Maximized Care Services helps agencies secure dependable Physical Therapy, Occupational Therapy, and Speech-Language Pathology coverage while building a strong network of clinicians ready to support patient care.
+        </p>
+
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#agencies">Partner With Us</a>
+          <a class="btn btn-secondary" href="#clinicians">Work With Us</a>
+        </div>
+
+        <div class="hero-stats">
+          <div class="stat-cell">
+            <strong>PT</strong>
+            <span>Physical therapy coverage</span>
+          </div>
+          <div class="stat-cell">
+            <strong>OT</strong>
+            <span>Occupational therapy support</span>
+          </div>
+          <div class="stat-cell">
+            <strong>SLP</strong>
+            <span>Speech-language support</span>
+          </div>
+          <div class="stat-cell">
+            <strong>NYC+</strong>
+            <span>Agency-focused support</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="scroll-hint">
+      <small>Scroll</small>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <section id="services">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="tag">Our Disciplines</div>
+        <h2>Comprehensive therapy coverage support</h2>
+        <p>
+          Built to help agencies secure quality clinicians while maintaining clear, professional, and organized communication.
+        </p>
+      </div>
+
+      <div class="cards three service-grid">
+        <article class="card reveal service-card pt-card">
+          <div class="icon pt">PT</div>
+          <h3>Physical Therapy</h3>
+          <p>Support for mobility, strength, balance, functional recovery, and patient progression through individualized therapy services.</p>
+          <ul class="pt-list">
+            <li>Functional movement and mobility support</li>
+            <li>Strength, balance, and gait-based care</li>
+            <li>Coverage aligned with agency needs</li>
+          </ul>
+        </article>
+
+        <article class="card reveal service-card ot-card">
+          <div class="icon ot">OT</div>
+          <h3>Occupational Therapy</h3>
+          <p>Coverage focused on helping patients improve independence, daily function, safety, and home-based activity performance.</p>
+          <ul class="ot-list">
+            <li>ADL and self-care support</li>
+            <li>Safety and home-function emphasis</li>
+            <li>Professional communication and follow-through</li>
+          </ul>
+        </article>
+
+        <article class="card reveal service-card slp-card">
+          <div class="icon slp">SLP</div>
+          <h3>Speech-Language Pathology</h3>
+          <p>Reliable support for communication, swallowing, and cognitive-linguistic needs within agency workflows.</p>
+          <ul class="slp-list">
+            <li>Speech and communication support</li>
+            <li>Swallowing and cognitive intervention</li>
+            <li>Consistent clinical professionalism</li>
+          </ul>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="agencies">
+    <div class="container agency-grid">
+      <div>
+        <div class="section-head reveal">
+          <div class="tag">For Agencies</div>
+          <h2>Reliable therapy coverage, presented like a true partner</h2>
+          <p>
+            Need dependable PT, OT, or SLP coverage? Maximized Care Services helps agencies secure professional support through a smoother, more organized partnership experience.
+          </p>
+        </div>
+
+        <div class="steps">
+          <div class="step reveal">
+            <div class="step-number">01</div>
+            <div>
+              <h4>Share your staffing need</h4>
+              <p>Tell us the discipline, geography, and scheduling need so we can understand the request clearly and respond efficiently.</p>
+            </div>
+          </div>
+
+          <div class="step reveal">
+            <div class="step-number">02</div>
+            <div>
+              <h4>We coordinate the match</h4>
+              <p>Our process is built around identifying qualified clinicians that align with the opportunity and the agency’s operational needs.</p>
+            </div>
+          </div>
+
+          <div class="step reveal">
+            <div class="step-number">03</div>
+            <div>
+              <h4>Streamlined communication</h4>
+              <p>From outreach to onboarding, we aim to keep communication clean, prompt, and easy for leadership teams to work with.</p>
+            </div>
+          </div>
+
+          <div class="step reveal">
+            <div class="step-number">04</div>
+            <div>
+              <h4>Ongoing relationship building</h4>
+              <p>We want to become a dependable resource for repeat staffing support as your needs expand across disciplines and locations.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <aside class="panel reveal">
+        <h3>Why agencies work with us</h3>
+        <p>
+          We focus on professionalism, responsiveness, and building long-term partnerships with agencies that need dependable coverage.
+        </p>
+
+        <div class="checks">
+          <div><span class="check"></span><span>Multi-discipline PT, OT, and SLP support</span></div>
+          <div><span class="check"></span><span>Clear and consistent communication</span></div>
+          <div><span class="check"></span><span>Reliable coverage aligned with agency needs</span></div>
+          <div><span class="check"></span><span>Professional, organized partnership approach</span></div>
+        </div>
+
+        <a class="btn btn-primary" href="#contact">Request Coverage</a>
+      </aside>
+    </div>
+  </section>
+
+  <section id="clinicians">
+    <div class="container">
+      <div class="section-head reveal">
+        <div class="tag">For Clinicians</div>
+        <h2>Work with Maximized Care Services</h2>
+        <p>
+          If you are a PT, OT, or SLP looking to work with us, we welcome the opportunity to connect and learn more about your availability, coverage area, and experience.
+        </p>
+      </div>
+
+      <div class="cards three clinician-grid">
+        <article class="card reveal pt-card">
+          <div class="tag" style="margin-bottom:14px;background:#def7ec;color:#047857;">PT Opportunity</div>
+          <h3>Physical Therapist</h3>
+          <p>For clinicians interested in flexible opportunities and strong communication with agency partners.</p>
+          <ul class="pt-list">
+            <li>Provide patient-centered therapy services</li>
+            <li>Maintain clear documentation and communication</li>
+            <li>Collaborate with interdisciplinary care teams</li>
+          </ul>
+          <button class="apply-btn pt-btn" type="button" data-role="Physical Therapist">Apply Now</button>
+        </article>
+
+        <article class="card reveal ot-card">
+          <div class="tag" style="margin-bottom:14px;background:#e8f1ff;color:#1d4ed8;">OT Opportunity</div>
+          <h3>Occupational Therapist</h3>
+          <p>For OTs who want to work with a team that values presentation, trust, and long-term partnership building.</p>
+          <ul class="ot-list">
+            <li>Support ADLs and functional independence</li>
+            <li>Assess home safety and patient needs</li>
+            <li>Communicate progress with care teams</li>
+          </ul>
+          <button class="apply-btn ot-btn" type="button" data-role="Occupational Therapist">Apply Now</button>
+        </article>
+
+        <article class="card reveal slp-card">
+          <div class="tag" style="margin-bottom:14px;background:#f3ebff;color:#7c3aed;">SLP Opportunity</div>
+          <h3>Speech-Language Pathologist</h3>
+          <p>For SLPs looking to join a growing network positioned to support agencies with dependable discipline-specific coverage.</p>
+          <ul class="slp-list">
+            <li>Evaluate and treat speech and swallowing disorders</li>
+            <li>Develop patient-specific care plans</li>
+            <li>Coordinate with healthcare teams for outcomes</li>
+          </ul>
+          <button class="apply-btn slp-btn" type="button" data-role="Speech-Language Pathologist">Apply Now</button>
+        </article>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt" id="contact">
+    <div class="container contact-grid">
+      <div class="contact-card reveal">
+        <div class="tag">Contact</div>
+        <h2 style="font-size:36px;">Ready to connect?</h2>
+        <p class="lead">Use the form to start an agency conversation or let us know if you are a PT, OT, or SLP interested in working with us.</p>
+
+        <div class="logo-plate">
+          <img src="logo-light.png" alt="Maximized Care Services light logo" />
+        </div>
+
+        <div class="contact-points">
+          <div>
+            <strong>Phone</strong>
+            <span>718-569-8464</span>
+          </div>
+          <div>
+            <strong>Email</strong>
+            <span>info@maximizedcareservices.com</span>
+          </div>
+          <div>
+            <strong>Service Focus</strong>
+            <span>Agency coverage support for PT, OT, and SLP across New York City and surrounding areas.</span>
+          </div>
+        </div>
+      </div>
+
+      <form class="form reveal" id="demoForm">
+        <div class="tag">Inquiry Form</div>
+        <h2 style="font-size:34px;">Send an inquiry</h2>
+
+        <div class="form-grid">
+          <label>
+            Full Name
+            <input type="text" placeholder="Your name" required>
+          </label>
+          <label>
+            Email
+            <input type="email" placeholder="you@example.com" required>
+          </label>
+        </div>
+
+        <div class="form-grid">
+          <label>
+            Phone
+            <input type="text" placeholder="(555) 555-5555">
+          </label>
+          <label>
+            I am a...
+            <select>
+              <option>Agency seeking services</option>
+              <option>PT, OT, or SLP interested in working with us</option>
+              <option>Other inquiry</option>
+            </select>
+          </label>
+        </div>
+
+        <label>
+          Company / Organization
+          <input type="text" placeholder="Company name">
+        </label>
+
+        <label>
+          Message
+          <textarea placeholder="Tell us what you need."></textarea>
+        </label>
+
+        <button class="btn btn-primary" type="submit">Submit Inquiry</button>
+        <div class="notice" id="notice">Form captured for preview. Next step is wiring this to your email so inquiries actually send.</div>
+      </form>
+    </div>
+  </section>
+
+  <div class="modal-overlay" id="applyModal" aria-hidden="true">
+    <div class="modal-card">
+      <button class="modal-close" type="button" id="modalClose" aria-label="Close">×</button>
+      <div class="modal-header">
+        <div class="tag">Clinician Application</div>
+        <h3 id="modalTitle">Apply to Work With Us</h3>
+        <p>Complete the information below and our team will review your details and follow up if there is a fit.</p>
+      </div>
+
+      <form id="applyForm">
+        <div class="form-grid">
+          <label>
+            Full Name
+            <input type="text" placeholder="Your name" required>
+          </label>
+          <label>
+            Email
+            <input type="email" placeholder="you@example.com" required>
+          </label>
+        </div>
+
+        <div class="form-grid">
+          <label>
+            Phone
+            <input type="text" placeholder="(555) 555-5555" required>
+          </label>
+          <label>
+            Discipline
+            <input type="text" id="disciplineField" readonly>
+          </label>
+        </div>
+
+        <div class="form-grid">
+          <label>
+            License Number
+            <input type="text" placeholder="License number">
+          </label>
+          <label>
+            Availability
+            <select>
+              <option>Per diem</option>
+              <option>Part-time</option>
+              <option>Full-time</option>
+              <option>Weekends only</option>
+            </select>
+          </label>
+        </div>
+
+        <label>
+          Coverage Area
+          <input type="text" placeholder="Boroughs, counties, or regions you can cover">
+        </label>
+
+        <label>
+          Experience / Additional Information
+          <textarea placeholder="Share experience, specialties, schedule flexibility, or anything helpful."></textarea>
+        </label>
+
+        <button class="btn btn-primary" type="submit">Submit Application</button>
+        <div class="modal-success" id="applySuccess">Application captured for preview. Next step is wiring this to your email so submissions actually send.</div>
+      </form>
+    </div>
+  </div>
+
+  <footer class="footer">
+    <div class="container footer-grid">
+      <div>
+        <div class="footer-brand">
+          <img src="logo-dark.png" alt="Maximized Care Services dark logo footer" />
+        </div>
+        <p>Professional PT, OT, and SLP coverage support for agencies, with opportunities for clinicians interested in working with us.</p>
+      </div>
+
+      <div>
+        <h4>Company</h4>
+        <a href="#services">Services</a>
+        <a href="#agencies">For Agencies</a>
+        <a href="#clinicians">For Clinicians</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div>
+        <h4>Contact</h4>
+        <span>718-569-8464</span>
+        <span>info@maximizedcareservices.com</span>
+        <span>New York City Area</span>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">© 2026 Maximized Care Services LLC. Website preview concept.</div>
+  </footer>
+
+  <script>
+    const reveals = document.querySelectorAll('.reveal');
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.14 });
+
+    reveals.forEach(el => observer.observe(el));
+
+    const form = document.getElementById('demoForm');
+    const notice = document.getElementById('notice');
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      notice.classList.add('show');
+    });
+
+    const applyModal = document.getElementById('applyModal');
+    const modalClose = document.getElementById('modalClose');
+    const modalTitle = document.getElementById('modalTitle');
+    const disciplineField = document.getElementById('disciplineField');
+    const applySuccess = document.getElementById('applySuccess');
+    const applyForm = document.getElementById('applyForm');
+    const applyButtons = document.querySelectorAll('.apply-btn');
+
+    applyButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const role = button.getAttribute('data-role');
+        modalTitle.textContent = 'Apply as a ' + role;
+        disciplineField.value = role;
+        applySuccess.classList.remove('show');
+        applyForm.reset();
+        disciplineField.value = role;
+        applyModal.classList.add('open');
+        applyModal.setAttribute('aria-hidden', 'false');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    function closeModal() {
+      applyModal.classList.remove('open');
+      applyModal.setAttribute('aria-hidden', 'true');
+      document.body.style.overflow = '';
+    }
+
+    modalClose.addEventListener('click', closeModal);
+    applyModal.addEventListener('click', function(e) {
+      if (e.target === applyModal) closeModal();
+    });
+
+    document.addEventListener('keydown', function(e) {
+      if (e.key === 'Escape' && applyModal.classList.contains('open')) {
+        closeModal();
+      }
+    });
+
+    applyForm.addEventListener('submit', function(e) {
+      e.preventDefault();
+      applySuccess.classList.add('show');
+    });
+  </script>
+</body>
+</html>
