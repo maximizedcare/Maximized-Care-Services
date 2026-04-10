@@ -8,6 +8,8 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+  <script>emailjs.init('J14U4qAIUqq1sakpz');</script>
   <style>
     :root {
       --navy: #061220;
@@ -1297,22 +1299,22 @@
         <div class="form-grid">
           <label>
             Full Name
-            <input type="text" placeholder="Your name" required>
+            <input type="text" name="from_name" placeholder="Your name" required>
           </label>
           <label>
             Email
-            <input type="email" placeholder="you@example.com" required>
+            <input type="email" name="from_email" placeholder="you@example.com" required>
           </label>
         </div>
 
         <div class="form-grid">
           <label>
             Phone
-            <input type="text" placeholder="(555) 555-5555">
+            <input type="text" name="phone" placeholder="(555) 555-5555">
           </label>
           <label>
             I am a...
-            <select>
+            <select name="inquiry_type">
               <option>Agency seeking services</option>
               <option>PT, OT, or SLP interested in working with us</option>
               <option>Other inquiry</option>
@@ -1322,12 +1324,12 @@
 
         <label>
           Company / Organization
-          <input type="text" placeholder="Company name">
+          <input type="text" name="company" placeholder="Company name">
         </label>
 
         <label>
           Message
-          <textarea placeholder="Tell us what you need."></textarea>
+          <textarea name="message" placeholder="Tell us what you need."></textarea>
         </label>
 
         <button class="btn btn-primary" type="submit">Submit Inquiry</button>
@@ -1349,33 +1351,33 @@
         <div class="form-grid">
           <label>
             Full Name
-            <input type="text" placeholder="Your name" required>
+            <input type="text" name="from_name" placeholder="Your name" required>
           </label>
           <label>
             Email
-            <input type="email" placeholder="you@example.com" required>
+            <input type="email" name="from_email" placeholder="you@example.com" required>
           </label>
         </div>
 
         <div class="form-grid">
           <label>
             Phone
-            <input type="text" placeholder="(555) 555-5555" required>
+            <input type="text" name="phone" placeholder="(555) 555-5555" required>
           </label>
           <label>
             Discipline
-            <input type="text" id="disciplineField" readonly>
+            <input type="text" name="discipline" id="disciplineField" readonly>
           </label>
         </div>
 
         <div class="form-grid">
           <label>
             License Number
-            <input type="text" placeholder="License number">
+            <input type="text" name="license_number" placeholder="License number">
           </label>
           <label>
             Availability
-            <select>
+            <select name="availability">
               <option>Per diem</option>
               <option>Part-time</option>
               <option>Full-time</option>
@@ -1386,12 +1388,12 @@
 
         <label>
           Coverage Area
-          <input type="text" placeholder="Boroughs, counties, or regions you can cover">
+          <input type="text" name="coverage_area" placeholder="Boroughs, counties, or regions you can cover">
         </label>
 
         <label>
           Experience / Additional Information
-          <textarea placeholder="Share experience, specialties, schedule flexibility, or anything helpful."></textarea>
+          <textarea name="experience" placeholder="Share experience, specialties, schedule flexibility, or anything helpful."></textarea>
         </label>
 
         <button class="btn btn-primary" type="submit">Submit Application</button>
@@ -1445,7 +1447,16 @@
     const notice = document.getElementById('notice');
     form.addEventListener('submit', function(e) {
       e.preventDefault();
-      notice.classList.add('show');
+      emailjs.sendForm('service_kz16ooh', 'template_qbornad', form)
+        .then(function() {
+          notice.textContent = 'Message sent! We\'ll be in touch soon.';
+          notice.classList.add('show');
+          form.reset();
+        }, function(error) {
+          notice.textContent = 'Something went wrong. Please try again or email us directly.';
+          notice.classList.add('show');
+          console.error('EmailJS error:', error);
+        });
     });
 
     const applyModal = document.getElementById('applyModal');
@@ -1489,7 +1500,16 @@
 
     applyForm.addEventListener('submit', function(e) {
       e.preventDefault();
-      applySuccess.classList.add('show');
+      emailjs.sendForm('service_kz16ooh', 'template_t4lahap', applyForm)
+        .then(function() {
+          applySuccess.textContent = 'Application submitted! We\'ll review your details and follow up if there\'s a fit.';
+          applySuccess.classList.add('show');
+          applyForm.reset();
+        }, function(error) {
+          applySuccess.textContent = 'Something went wrong. Please try again or contact us directly.';
+          applySuccess.classList.add('show');
+          console.error('EmailJS error:', error);
+        });
     });
   </script>
 </body>
