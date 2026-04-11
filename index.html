@@ -152,6 +152,7 @@
     .hero {
       position: relative;
       overflow: hidden;
+      padding: 0;
       background:
         radial-gradient(circle at 85% 18%, rgba(103, 210, 255, .14), transparent 24%),
         radial-gradient(circle at 12% 82%, rgba(139, 92, 246, .14), transparent 24%),
@@ -210,12 +211,11 @@
     .hero-inner {
       position: relative;
       z-index: 2;
-      min-height: calc(100vh - 84px);
       display: flex;
       align-items: center;
       justify-content: center;
       text-align: center;
-      padding: 78px 0 92px;
+      padding: 0 0 60px;
     }
 
     .eyebrow {
@@ -247,9 +247,9 @@
     }
 
     .hero-logo {
-      max-width: 560px;
+      max-width: 380px;
       margin: 0 auto 18px;
-      padding: 18px;
+      padding: 14px;
       border-radius: 30px;
       border: 1px solid rgba(255,255,255,.08);
       background: linear-gradient(180deg, rgba(255,255,255,.04), rgba(255,255,255,.02));
@@ -746,16 +746,22 @@
     }
 
     .agency-grid,
-    .contact-grid,
-    .footer-grid {
+    .contact-grid {
       display: grid;
       gap: 30px;
       align-items: start;
     }
 
+    .footer-grid {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 40px;
+    }
+
     .agency-grid { grid-template-columns: 1.02fr .98fr; }
     .contact-grid { grid-template-columns: .92fr 1.08fr; }
-    .footer-grid { grid-template-columns: 1.6fr 1fr 1fr; }
 
     .steps {
       display: grid;
@@ -917,12 +923,18 @@
       border-radius: 26px;
       padding: 18px;
       max-width: 360px;
-      margin-bottom: 16px;
+      margin: 0 auto 16px;
     }
 
     .footer-brand img { border-radius: 18px; }
 
-    .footer p,
+    .footer p {
+      color: #aabed2;
+      margin: 0 auto 16px;
+      line-height: 1.8;
+      max-width: 600px;
+    }
+
     .footer a,
     .footer span {
       color: #aabed2;
@@ -945,6 +957,7 @@
       border-top: 1px solid rgba(255,255,255,.10);
       color: #8da3bc;
       font-size: 13px;
+      text-align: center;
     }
 
     .reveal {
@@ -997,7 +1010,6 @@
       .cards.three,
       .agency-grid,
       .contact-grid,
-      .footer-grid,
       .form-grid { grid-template-columns: 1fr; }
       .stat-cell {
         border-right: none;
