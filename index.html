@@ -9,7 +9,7 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
   <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-  <script>emailjs.init('J14U4qAIUqq1sakpz');</script>
+  <script>emailjs.init('Slb_L4Do_Urc1ALui');</script>
   <style>
     :root {
       --navy: #061220;
@@ -734,11 +734,15 @@
     .modal-success {
       display: none;
       margin-top: 18px;
-      padding: 16px 18px;
+      padding: 22px 24px;
       border-radius: 16px;
-      background: #edf7ff;
-      color: #23517d;
+      background: linear-gradient(135deg, #edf7ff 0%, #d6f0ff 100%);
+      border: 1.5px solid #a8d8f5;
+      color: #1a4a72;
+      font-size: 16px;
       font-weight: 600;
+      text-align: center;
+      line-height: 1.6;
     }
 
     .modal-success.show { display: block; }
@@ -1409,7 +1413,7 @@
         </label>
 
         <button class="btn btn-primary" type="submit">Submit Application</button>
-        <div class="modal-success" id="applySuccess">Application captured for preview. Next step is wiring this to your email so submissions actually send.</div>
+        <div class="modal-success" id="applySuccess"></div>
       </form>
     </div>
   </div>
@@ -1459,7 +1463,7 @@
     const notice = document.getElementById('notice');
     form.addEventListener('submit', function(e) {
       e.preventDefault();
-      emailjs.sendForm('service_kz16ooh', 'template_qbornad', form)
+      emailjs.sendForm('service_pxorwlk', 'template_mso8vda', form)
         .then(function() {
           notice.textContent = 'Message sent! We\'ll be in touch soon.';
           notice.classList.add('show');
@@ -1512,11 +1516,15 @@
 
     applyForm.addEventListener('submit', function(e) {
       e.preventDefault();
-      emailjs.sendForm('service_kz16ooh', 'template_t4lahap', applyForm)
+      emailjs.sendForm('service_pxorwlk', 'template_ktq38u8', applyForm)
         .then(function() {
-          applySuccess.textContent = 'Application submitted! We\'ll review your details and follow up if there\'s a fit.';
+          applySuccess.innerHTML = '<strong>Thank you for applying!</strong><br>We have received your application and will be in touch if there is a fit.';
           applySuccess.classList.add('show');
           applyForm.reset();
+          setTimeout(function() {
+            closeModal();
+            applySuccess.classList.remove('show');
+          }, 3000);
         }, function(error) {
           applySuccess.textContent = 'Something went wrong. Please try again or contact us directly.';
           applySuccess.classList.add('show');
