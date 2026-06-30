@@ -911,16 +911,14 @@
       max-width: 560px;
     }
 
+    /* three columns side by side: brand+note | Company | Contact */
     .footer-grid {
       display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
+      grid-template-columns: 1.4fr 1fr 1fr;
       align-items: start;
       text-align: center;
-      gap: 32px 40px;
+      gap: 40px;
     }
-
-    /* brand block spans the top; Company + Contact sit side by side */
-    .footer-grid > :first-child { grid-column: 1 / -1; }
 
     .contact-grid { grid-template-columns: .92fr 1.08fr; }
 
