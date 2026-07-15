@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Accessibility Statement — Maximized Care Services LLC</title>
+  <meta name="description" content="Accessibility statement for Maximized Care Services LLC: standard targeted, current conformance status, known exceptions, and how to reach us if you encounter a barrier." />
+  <link rel="icon" type="image/png" sizes="32x32" href="legacy-logos/favicon-32.png" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --blue: #1f6fd6;
+      --teal-ink: #0f6b73;
+      --text: #0f172a;
+      --muted: #586777;
+      --line: #dbe7f2;
+      --r-1: 12px;
+      --r-3: 24px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: "Inter", Arial, sans-serif;
+      color: var(--text);
+      background: linear-gradient(180deg, #fbfdff 0%, #eef5fb 100%);
+      line-height: 1.65;
+    }
+
+    .container { width: min(820px, calc(100% - 48px)); margin: 0 auto; }
+
+    .skip-link {
+      position: absolute;
+      left: 8px;
+      top: -60px;
+      z-index: 100;
+      padding: 12px 18px;
+      border-radius: var(--r-1);
+      background: #fff;
+      color: #0f172a;
+      font-weight: 700;
+      transition: top .36s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .skip-link:focus { top: 8px; }
+
+    .top {
+      background: linear-gradient(160deg, #020917 0%, #091a34 60%, #102b52 100%);
+      color: #fff;
+      padding: 26px 0;
+    }
+
+    .top a { color: #dbe7f3; font-weight: 600; text-decoration: none; }
+    .top a:hover { color: #fff; text-decoration: underline; }
+
+    main { padding: 56px 0 90px; }
+
+    h1 {
+      font-family: "Sora", sans-serif;
+      font-size: clamp(32px, 5vw, 46px);
+      line-height: 1.05;
+      letter-spacing: -.03em;
+      margin: 0 0 10px;
+    }
+
+    h2 {
+      font-family: "Sora", sans-serif;
+      font-size: 24px;
+      margin: 40px 0 12px;
+      letter-spacing: -.02em;
+    }
+
+    p, li { color: var(--muted); }
+    .lead { font-size: 18px; }
+    strong { color: var(--text); }
+
+    /* The contact email is a single 34-character word — without this it pushes the
+       page past 320px and breaks 1.4.10 Reflow. */
+    a { color: var(--blue); text-decoration: underline; text-underline-offset: 2px; overflow-wrap: anywhere; }
+
+    a:focus-visible,
+    .skip-link:focus-visible {
+      outline: 3px solid var(--blue);
+      outline-offset: 3px;
+      border-radius: 8px;
+    }
+
+    .updated {
+      display: inline-block;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: #e8f5fb;
+      color: var(--teal-ink);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .status {
+      margin: 22px 0;
+      padding: 20px 22px;
+      border-radius: var(--r-3);
+      background: #fff;
+      border: 1px solid var(--line);
+      box-shadow: 0 18px 50px rgba(15,23,42,.10);
+    }
+
+    /* Wide content scrolls inside its own container rather than the page body. */
+    .table-wrap { overflow-x: auto; margin: 16px 0; }
+
+    table { border-collapse: collapse; width: 100%; min-width: 520px; }
+
+    caption {
+      text-align: left;
+      padding: 0 0 10px;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    th, td {
+      text-align: left;
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--line);
+      vertical-align: top;
+      font-size: 15px;
+    }
+
+    th { color: var(--text); font-weight: 700; background: #f8fbff; }
+    td { color: var(--muted); }
+
+    ul { padding-left: 22px; }
+    li { margin-bottom: 8px; }
+
+    footer {
+      background: #061120;
+      color: #aabed2;
+      padding: 30px 0;
+      font-size: 14px;
+    }
+
+    footer a { color: #aabed2; }
+
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after {
+        animation-duration: .001ms !important;
+        transition-duration: .001ms !important;
+        scroll-behavior: auto !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
+  <div class="top">
+    <div class="container"><a href="index.html">&larr; Back to Maximized Care Services</a></div>
+  </div>
+
+  <main id="main" tabindex="-1">
+    <div class="container">
+      <span class="updated">Last reviewed: [DATE]</span>
+      <h1>Accessibility Statement</h1>
+      <p class="lead">
+        Maximized Care Services LLC is committed to ensuring our website is accessible to people
+        with disabilities, including the clinicians and agency partners we serve.
+      </p>
+
+      <h2>Standard we target</h2>
+      <p>
+        We are working toward conformance with the
+        <a href="https://www.w3.org/TR/WCAG22/">Web Content Accessibility Guidelines (WCAG) 2.2</a>,
+        Level AA.
+      </p>
+
+      <h2>Current conformance status</h2>
+      <div class="status">
+        <p style="margin:0;">
+          <strong>Partially conformant.</strong> &ldquo;Partially conformant&rdquo; means some parts
+          of the content do not fully conform to the accessibility standard. This site has not yet
+          been validated by an independent third-party audit, nor by testing with users with
+          disabilities. Conformance is assessed per page and per user flow, not as a single
+          site-wide claim.
+        </p>
+      </div>
+
+      <h2>Known exceptions and remediation dates</h2>
+      <div class="table-wrap">
+        <table>
+          <caption>Known accessibility exceptions and their target remediation dates.</caption>
+          <thead>
+            <tr><th scope="col">Area</th><th scope="col">Issue</th><th scope="col">Target date</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Discipline colour coding</td>
+              <td>The colours used for PT, OT, and SLP are not distinguishable from one another under some forms of colour vision deficiency. Every instance is also labelled in text, so no information is carried by colour alone.</td>
+              <td>Mitigated &mdash; under review [DATE]</td>
+            </tr>
+            <tr>
+              <td>Screen-reader validation</td>
+              <td>The site has not yet been tested end to end with NVDA, JAWS, or VoiceOver.</td>
+              <td>[DATE]</td>
+            </tr>
+            <tr>
+              <td>Third-party form delivery</td>
+              <td>Our inquiry and application forms are delivered by EmailJS, a third-party service whose code we do not control.</td>
+              <td>Under review [DATE]</td>
+            </tr>
+            <tr>
+              <td>High Contrast Mode</td>
+              <td>Some headline text uses a gradient fill whose rendering in Windows High Contrast Mode has not been verified.</td>
+              <td>[DATE]</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h2>Alternatives</h2>
+      <p>
+        If any part of this site prevents you from contacting us, you can reach us directly by
+        phone at <a href="tel:+17185698464">718-569-8464</a> or by email at
+        <a href="mailto:bmaximous@maximizedcareservices.com">bmaximous@maximizedcareservices.com</a>.
+        We will accept and process any inquiry or clinician application through these channels.
+      </p>
+
+      <h2>Feedback</h2>
+      <p>
+        We welcome your feedback on the accessibility of this site. If you encounter a barrier,
+        please contact us and tell us where it happened:
+      </p>
+      <ul>
+        <li>Email: <a href="mailto:bmaximous@maximizedcareservices.com">bmaximous@maximizedcareservices.com</a> &mdash; we aim to respond within <strong>2 business days</strong></li>
+        <li>Phone: <a href="tel:+17185698464">718-569-8464</a></li>
+      </ul>
+
+      <h2>Assessment approach</h2>
+      <p>
+        This site was assessed by manual code review and manual contrast measurement against
+        WCAG 2.2 Level AA, supported by automated testing with axe-core in our build pipeline.
+        Automated tools detect only a portion of accessibility barriers, so automated results
+        alone are not treated as evidence of conformance.
+      </p>
+      <p>Last reviewed: [DATE]</p>
+    </div>
+  </main>
+
+  <footer>
+    <div class="container">
+      &copy; 2026 Maximized Care Services LLC. &nbsp;<a href="index.html">Home</a>
+    </div>
+  </footer>
+</body>
+</html>

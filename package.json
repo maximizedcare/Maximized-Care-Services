@@ -1,0 +1,20 @@
+{
+  "name": "maximized-care-services",
+  "private": true,
+  "type": "module",
+  "description": "Static site for Maximized Care Services LLC, with a WCAG 2.2 AA regression guard.",
+  "scripts": {
+    "serve": "http-server . -p 4187 --silent",
+    "lint": "eslint index.html accessibility.html",
+    "test:a11y": "playwright test",
+    "verify": "npm run lint && npm run test:a11y"
+  },
+  "devDependencies": {
+    "@axe-core/playwright": "^4.10.0",
+    "@html-eslint/eslint-plugin": "^0.27.0",
+    "@html-eslint/parser": "^0.27.0",
+    "@playwright/test": "^1.48.0",
+    "eslint": "^9.13.0",
+    "http-server": "^14.1.1"
+  }
+}

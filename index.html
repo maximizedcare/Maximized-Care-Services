@@ -5,9 +5,9 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Maximized Care Services LLC</title>
   <meta name="description" content="Dependable PT, OT, and SLP coverage for agencies across New York City and surrounding areas. One request, three disciplines, a response within one business day." />
-  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png" />
-  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png" />
-  <link rel="apple-touch-icon" href="favicon-180.png" />
+  <link rel="icon" type="image/png" sizes="32x32" href="legacy-logos/favicon-32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="legacy-logos/favicon-16.png" />
+  <link rel="apple-touch-icon" href="legacy-logos/favicon-180.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Sora:wght@600;700;800&display=swap" rel="stylesheet">
@@ -18,14 +18,18 @@
       --navy: #061220;
       --navy-2: #0d2240;
       --navy-3: #102b52;
-      --blue: #2384dd;
-      --cyan: #67d2ff;
-      --teal: #2fb8be;
-      --purple: #8b5cf6;
-      --green: #10b981;
+      --blue: #1f6fd6;      /* 4.88:1 with #fff — was #2384dd (3.88:1, failed 1.4.3) */
+      --cyan: #67d2ff;      /* 10.78:1 on the header — focus ring on dark surfaces */
+      /* Brand teal is a sound decorative colour and a failing text colour, so it is
+         split rather than discarded. Never set --teal on text. */
+      --teal: #2fb8be;      /* decorative only: gradients, .check dots, accents */
+      --teal-ink: #0f6b73;  /* text token — 5.60:1 on #e8f5fb, 6.23:1 on #fff */
+      --purple: #7b45e0;    /* 5.57:1 with #fff — was #8b5cf6 */
+      --green: #0a8259;     /* 4.83:1 with #fff — was #10b981 */
       --text: #0f172a;
-      --muted: #64748b;
-      --line: #dbe7f2;
+      --muted: #586777;     /* 5.00:1 on .alt #e7eff8, 5.80:1 on #fff — was #64748b (4.10:1) */
+      --line: #dbe7f2;      /* decorative card borders — not a UI control boundary */
+      --line-input: #75899f;/* form-control borders — 3.47:1 vs #f8fbff (1.4.11) */
       --card: #ffffff;
       --shadow: 0 18px 50px rgba(15,23,42,.10);
       /* radius scale: controls / accents / cards / surfaces / pill */
@@ -54,7 +58,6 @@
       font-family: "Inter", Arial, sans-serif;
       color: var(--text);
       background: linear-gradient(180deg, #fbfdff 0%, #eef5fb 100%);
-      overflow-x: hidden;
     }
     img { max-width: 100%; display: block; }
     a { text-decoration: none; color: inherit; }
@@ -274,30 +277,6 @@
       pointer-events: none;
     }
 
-    .hero-particles {
-      position: absolute;
-      inset: 0;
-      overflow: hidden;
-      pointer-events: none;
-    }
-
-    .hero-particles span {
-      position: absolute;
-      display: block;
-      width: 8px;
-      height: 8px;
-      border-radius: 999px;
-      background: rgba(103,210,255,.35);
-      box-shadow: 0 0 20px rgba(103,210,255,.4);
-      animation: float 16s linear infinite;
-    }
-
-    .hero-particles span:nth-child(1) { top: 18%; left: 12%; animation-duration: 18s; }
-    .hero-particles span:nth-child(2) { top: 30%; left: 82%; animation-duration: 12s; width: 6px; height: 6px; }
-    .hero-particles span:nth-child(3) { top: 72%; left: 18%; animation-duration: 17s; }
-    .hero-particles span:nth-child(4) { top: 64%; left: 72%; animation-duration: 14s; width: 10px; height: 10px; }
-    .hero-particles span:nth-child(5) { top: 48%; left: 52%; animation-duration: 20s; width: 5px; height: 5px; }
-
     .ring {
       position: absolute;
       border-radius: 50%;
@@ -428,7 +407,7 @@
 
     .btn-primary {
       color: #fff;
-      background: linear-gradient(135deg, var(--blue), #1d4ed8);
+      background: linear-gradient(135deg, var(--blue), #1739ad);
       box-shadow: 0 14px 36px rgba(35,132,221,.35);
       /* spring settle for the magnetic pull (JS, fine-pointer only) */
       transition: transform var(--dur-2) var(--ease-spring),
@@ -536,7 +515,7 @@
       padding: 6px 12px;
       border-radius: 999px;
       background: #e8f5fb;
-      color: var(--teal);
+      color: var(--teal-ink);
       font-size: 12px;
       font-weight: 800;
       letter-spacing: .1em;
@@ -624,9 +603,11 @@
       z-index: 1;
     }
 
-    .pt { background: linear-gradient(135deg, #17b67a, #0b8f60); }
-    .ot { background: linear-gradient(135deg, #2c8cff, #2261df); }
-    .slp { background: linear-gradient(135deg, #9b6bff, #7c3aed); }
+    /* White text sits on these — the light end of each gradient is the worst case
+       and must clear 4.5:1 on its own. Hues preserved; lightness lowered. */
+    .pt { background: linear-gradient(135deg, #0a8259, #046544); }
+    .ot { background: linear-gradient(135deg, #1f6fd6, #1a52b8); }
+    .slp { background: linear-gradient(135deg, #7b45e0, #6423c4); }
 
     .card h3,
     .card p,
@@ -796,9 +777,9 @@
       opacity: .96;
     }
 
-    .apply-btn.pt-btn { background: linear-gradient(135deg, #17b67a, #0b8f60); box-shadow: 0 12px 28px rgba(23,182,122,.28); }
-    .apply-btn.ot-btn { background: linear-gradient(135deg, #2c8cff, #2261df); box-shadow: 0 12px 28px rgba(44,140,255,.28); }
-    .apply-btn.slp-btn { background: linear-gradient(135deg, #9b6bff, #7c3aed); box-shadow: 0 12px 28px rgba(155,107,255,.28); }
+    .apply-btn.pt-btn { background: linear-gradient(135deg, #0a8259, #046544); box-shadow: 0 12px 28px rgba(23,182,122,.28); }
+    .apply-btn.ot-btn { background: linear-gradient(135deg, #1f6fd6, #1a52b8); box-shadow: 0 12px 28px rgba(44,140,255,.28); }
+    .apply-btn.slp-btn { background: linear-gradient(135deg, #7b45e0, #6423c4); box-shadow: 0 12px 28px rgba(155,107,255,.28); }
 
     .modal-overlay {
       position: fixed;
@@ -812,12 +793,15 @@
       z-index: 2000;
       opacity: 0;
       pointer-events: none;
-      transition: opacity .25s ease;
+      visibility: hidden;
+      transition: opacity .25s ease, visibility 0s linear .25s;
     }
 
     .modal-overlay.open {
       opacity: 1;
       pointer-events: auto;
+      visibility: visible;
+      transition: opacity .25s ease, visibility 0s;
     }
 
     .modal-card {
@@ -869,13 +853,11 @@
       line-height: 1.7;
     }
 
+    /* Always rendered and never display:none — a live region must already be in the
+       accessibility tree when its text is injected, or the announcement is dropped.
+       Empty + unstyled collapses it to zero height, so no visual box appears. */
     .modal-success {
-      display: none;
-      margin-top: 18px;
-      padding: 22px 24px;
       border-radius: var(--r-2);
-      background: linear-gradient(135deg, #edf7ff 0%, #d6f0ff 100%);
-      border: 1.5px solid #a8d8f5;
       color: #1a4a72;
       font-size: 16px;
       font-weight: 600;
@@ -883,7 +865,12 @@
       line-height: 1.6;
     }
 
-    .modal-success.show { display: block; }
+    .modal-success.show {
+      margin-top: 18px;
+      padding: 22px 24px;
+      background: linear-gradient(135deg, #edf7ff 0%, #d6f0ff 100%);
+      border: 1.5px solid #a8d8f5;
+    }
 
     .alt {
       background: linear-gradient(180deg, #e7eff8 0%, #eef5fc 100%);
@@ -922,10 +909,27 @@
 
     .contact-grid { grid-template-columns: .92fr 1.08fr; }
 
+    /* Gives the step sequence its own heading in the a11y tree without altering the
+       visual design — otherwise the steps read as children of the aside's h3. */
+    .sr-only {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      margin: -1px;
+      padding: 0;
+      overflow: hidden;
+      clip: rect(0 0 0 0);
+      clip-path: inset(50%);
+      white-space: nowrap;
+      border: 0;
+    }
+
     .steps {
       display: grid;
       gap: 18px;
       margin-top: 28px;
+      padding-left: 0;
+      list-style: none;
     }
 
     .steps-row {
@@ -966,7 +970,7 @@
       display: grid;
       place-items: center;
       background: #e8f5fb;
-      color: var(--teal);
+      color: var(--teal-ink);
       font-weight: 800;
     }
 
@@ -996,16 +1000,18 @@
 
     .panel-dark h3 { color: #fff; }
     .panel-dark p { color: #a9c0d8; }
-    .panel-dark .checks div { color: #d4e2f0; }
+    .panel-dark .checks li { color: #d4e2f0; }
     .panel-dark .btn-primary { margin-top: 4px; }
 
     .checks {
       display: grid;
       gap: 12px;
       margin: 22px 0 28px;
+      padding-left: 0;
+      list-style: none;
     }
 
-    .checks div {
+    .checks li {
       display: flex;
       gap: 12px;
       align-items: flex-start;
@@ -1040,16 +1046,33 @@
     .contact-points {
       display: grid;
       gap: 16px;
+      padding-left: 0;
+      list-style: none;
     }
 
-    .contact-points div {
+    .contact-points li {
       background: #f8fbff;
       border: 1px solid #e3edf6;
       border-radius: var(--r-2);
       padding: 16px 18px;
     }
 
+    /* Phone and email are now real links — underline them so they are not
+       identifiable by colour alone (1.4.1). */
+    .contact-points a {
+      color: var(--blue);
+      text-decoration: underline;
+      text-underline-offset: 2px;
+    }
+
     .contact-points strong { display: block; margin-bottom: 6px; }
+
+    /* The email address is a single 34-char word; at 320px it exceeded its column and
+       was clipped. It is the fallback channel when the form fails — it must not clip. */
+    .contact-points span,
+    .footer span,
+    .footer a { overflow-wrap: anywhere; }
+
     .contact-points span { color: var(--muted); line-height: 1.6; }
 
     .form-grid {
@@ -1065,6 +1088,15 @@
       margin-bottom: 14px;
     }
 
+    /* The asterisk is a glyph, not a hue — required-ness survives colour blindness. */
+    .req-star { color: #b3261e; font-weight: 800; }
+
+    .req-note {
+      margin: 0 0 16px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+
     input,
     textarea,
     select {
@@ -1072,7 +1104,7 @@
       margin-top: 8px;
       padding: 14px 16px;
       border-radius: var(--r-1);
-      border: 1px solid #dbe7f2;
+      border: 1px solid var(--line-input);
       background: #f8fbff;
       color: var(--text);
       outline: none;
@@ -1091,17 +1123,19 @@
       min-height: 140px;
     }
 
+    /* Same live-region rule as .modal-success: never display:none, or the injected
+       status text is not announced. Empty + unstyled = zero height. */
     .notice {
-      margin-top: 16px;
-      padding: 14px 16px;
       border-radius: var(--r-2);
-      background: #edf7ff;
       color: #23517d;
       font-size: 14px;
-      display: none;
     }
 
-    .notice.show { display: block; }
+    .notice.show {
+      margin-top: 16px;
+      padding: 14px 16px;
+      background: #edf7ff;
+    }
 
     /* async submit affordance + success reveal */
     .btn[data-loading] { pointer-events: none; opacity: .8; }
@@ -1174,6 +1208,21 @@
       font-size: 13px;
       text-align: center;
     }
+
+    .skip-link {
+      position: absolute;
+      left: 8px;
+      top: -60px;
+      z-index: 1100;
+      padding: 12px 18px;
+      border-radius: var(--r-1);
+      background: #fff;
+      color: #0f172a;
+      font-weight: 700;
+      transition: top var(--dur-2) var(--ease-out-soft);
+    }
+
+    .skip-link:focus { top: 8px; }
 
     .reveal {
       opacity: 0;
@@ -1260,12 +1309,6 @@
       100% { top: 150%; }
     }
 
-    @keyframes float {
-      0% { transform: translateY(0) translateX(0); opacity: .2; }
-      50% { transform: translateY(-24px) translateX(10px); opacity: .9; }
-      100% { transform: translateY(-48px) translateX(-8px); opacity: 0; }
-    }
-
     @keyframes floatRing {
       0%, 100% { transform: translate(0,0) rotate(0deg); }
       25% { transform: translate(20px,-30px) rotate(6deg); }
@@ -1288,8 +1331,11 @@
         border-top: 1px solid rgba(255,255,255,0);
         transition: max-height .32s ease, opacity .25s ease, border-color .32s ease;
       }
+      /* Viewport-relative cap + scroll, not a fixed 380px. Forced text spacing (1.4.12)
+         overflowed the old cap and silently clipped the last item — the primary CTA. */
       .mobile-menu.open {
-        max-height: 380px;
+        max-height: 70vh;
+        overflow-y: auto;
         opacity: 1;
         border-top-color: rgba(255,255,255,.08);
       }
@@ -1347,12 +1393,14 @@
   </style>
 </head>
 <body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+
   <header class="header">
     <div class="scroll-progress" id="scrollProgress" aria-hidden="true"></div>
     <div class="container nav">
       <a href="#home" class="nav-brand">
         <div class="nav-logo-wrap">
-          <img src="legacy-logos/logo-icon.png" alt="Maximized Care Services icon" />
+          <img src="legacy-logos/logo-icon.png" alt="" aria-hidden="true" />
         </div>
         <div class="nav-copy">
           <strong>Maximized Care Services LLC</strong>
@@ -1377,7 +1425,7 @@
       </button>
     </div>
 
-    <div class="mobile-menu" id="mobileMenu" aria-hidden="true">
+    <div class="mobile-menu" id="mobileMenu" aria-hidden="true" inert>
       <div class="container">
         <a href="#services">Services</a>
         <a href="#agencies">For Agencies</a>
@@ -1389,6 +1437,7 @@
     </div>
   </header>
 
+  <main id="main" tabindex="-1">
   <section class="hero" id="home">
     <div class="ring ring-1"></div>
     <div class="ring ring-2"></div>
@@ -1398,7 +1447,7 @@
         <div class="eyebrow">Trusted therapy coverage partner</div>
 
         <div class="hero-logo">
-          <img src="logo/maximized-care-services-logo-dark.svg" alt="Maximized Care Services logo" />
+          <img src="logo/maximized-care-services-logo-dark.svg" alt="" aria-hidden="true" />
         </div>
 
         <h1>
@@ -1454,7 +1503,7 @@
 
       <div class="cards three service-grid">
         <article class="card reveal service-card pt-card">
-          <div class="icon pt">PT</div>
+          <div class="icon pt" aria-hidden="true">PT</div>
           <h3>Physical Therapy</h3>
           <p>Support for mobility, strength, balance, functional recovery, and patient progression through individualized therapy services.</p>
           <ul class="pt-list">
@@ -1465,7 +1514,7 @@
         </article>
 
         <article class="card reveal service-card ot-card">
-          <div class="icon ot">OT</div>
+          <div class="icon ot" aria-hidden="true">OT</div>
           <h3>Occupational Therapy</h3>
           <p>Coverage focused on helping patients improve independence, daily function, safety, and home-based activity performance.</p>
           <ul class="ot-list">
@@ -1476,7 +1525,7 @@
         </article>
 
         <article class="card reveal service-card slp-card">
-          <div class="icon slp">SLP</div>
+          <div class="icon slp" aria-hidden="true">SLP</div>
           <h3>Speech-Language Pathology</h3>
           <p>Reliable support for communication, swallowing, and cognitive-linguistic needs within agency workflows.</p>
           <ul class="slp-list">
@@ -1506,51 +1555,52 @@
             We focus on professionalism, responsiveness, and building long-term partnerships with agencies that need dependable coverage.
           </p>
 
-          <div class="checks">
-            <div><span class="check"></span><span>Multi-discipline PT, OT, and SLP support</span></div>
-            <div><span class="check"></span><span>Clear and consistent communication</span></div>
-            <div><span class="check"></span><span>Reliable coverage aligned with agency needs</span></div>
-            <div><span class="check"></span><span>Professional, organized partnership approach</span></div>
-          </div>
+          <ul class="checks">
+            <li><span class="check" aria-hidden="true"></span><span>Multi-discipline PT, OT, and SLP support</span></li>
+            <li><span class="check" aria-hidden="true"></span><span>Clear and consistent communication</span></li>
+            <li><span class="check" aria-hidden="true"></span><span>Reliable coverage aligned with agency needs</span></li>
+            <li><span class="check" aria-hidden="true"></span><span>Professional, organized partnership approach</span></li>
+          </ul>
 
           <a class="btn btn-primary" href="#contact">Request Coverage</a>
           <p style="margin:14px 0 0;font-size:13px;">No commitment — we typically respond within one business day.</p>
         </aside>
       </div>
 
-      <div class="steps steps-row">
-        <div class="step reveal">
-          <div class="step-number">01</div>
+      <h3 class="sr-only">How the partnership works</h3>
+      <ol class="steps steps-row">
+        <li class="step reveal">
+          <div class="step-number" aria-hidden="true">01</div>
           <div>
             <h4>Share your staffing need</h4>
             <p>Tell us the discipline, geography, and scheduling need so we can understand the request clearly and respond efficiently.</p>
           </div>
-        </div>
+        </li>
 
-        <div class="step reveal">
-          <div class="step-number">02</div>
+        <li class="step reveal">
+          <div class="step-number" aria-hidden="true">02</div>
           <div>
             <h4>We coordinate the match</h4>
             <p>Our process is built around identifying qualified clinicians that align with the opportunity and the agency’s operational needs.</p>
           </div>
-        </div>
+        </li>
 
-        <div class="step reveal">
-          <div class="step-number">03</div>
+        <li class="step reveal">
+          <div class="step-number" aria-hidden="true">03</div>
           <div>
             <h4>Streamlined communication</h4>
             <p>From outreach to onboarding, we aim to keep communication clean, prompt, and easy for leadership teams to work with.</p>
           </div>
-        </div>
+        </li>
 
-        <div class="step reveal">
-          <div class="step-number">04</div>
+        <li class="step reveal">
+          <div class="step-number" aria-hidden="true">04</div>
           <div>
             <h4>Ongoing relationship building</h4>
             <p>Our goal is to be your first call the next time a need opens up — across every discipline and location you grow into.</p>
           </div>
-        </div>
-      </div>
+        </li>
+      </ol>
     </div>
   </section>
 
@@ -1612,44 +1662,46 @@
         <p class="lead">Use the form to start an agency conversation or let us know if you are a PT, OT, or SLP interested in working with us.</p>
 
         <div class="logo-plate">
-          <img src="logo/maximized-care-services-logo-dark.svg" alt="Maximized Care Services logo" />
+          <img src="logo/maximized-care-services-logo-dark.svg" alt="" aria-hidden="true" />
         </div>
 
-        <div class="contact-points">
-          <div>
+        <ul class="contact-points">
+          <li>
             <strong>Phone</strong>
-            <span>718-569-8464</span>
-          </div>
-          <div>
+            <span><a href="tel:+17185698464">718-569-8464</a></span>
+          </li>
+          <li>
             <strong>Email</strong>
-            <span>bmaximous@maximizedcareservices.com</span>
-          </div>
-          <div>
+            <span><a href="mailto:bmaximous@maximizedcareservices.com">bmaximous@maximizedcareservices.com</a></span>
+          </li>
+          <li>
             <strong>Service Focus</strong>
             <span>Agency coverage support for PT, OT, and SLP across New York City and surrounding areas.</span>
-          </div>
-        </div>
+          </li>
+        </ul>
       </div>
 
       <form class="form reveal" id="demoForm">
         <div class="tag">Inquiry Form</div>
         <h2 style="font-size:34px;">Send an inquiry</h2>
 
+        <p class="req-note">Fields marked <span class="req-star" aria-hidden="true">*</span> are required.</p>
+
         <div class="form-grid">
           <label>
-            Full Name
-            <input type="text" name="from_name" placeholder="Your name" required>
+            Full Name <span class="req-star" aria-hidden="true">*</span>
+            <input type="text" name="from_name" autocomplete="name" placeholder="Your name" required>
           </label>
           <label>
-            Email
-            <input type="email" name="from_email" placeholder="you@example.com" required>
+            Email <span class="req-star" aria-hidden="true">*</span>
+            <input type="email" name="from_email" autocomplete="email" placeholder="you@example.com" required>
           </label>
         </div>
 
         <div class="form-grid">
           <label>
             Phone
-            <input type="text" name="phone" placeholder="(555) 555-5555">
+            <input type="tel" name="phone" autocomplete="tel" placeholder="(555) 555-5555">
           </label>
           <label>
             I am a...
@@ -1663,7 +1715,7 @@
 
         <label>
           Company / Organization
-          <input type="text" name="company" placeholder="Company name">
+          <input type="text" name="company" autocomplete="organization" placeholder="Company name">
         </label>
 
         <label>
@@ -1672,12 +1724,13 @@
         </label>
 
         <button class="btn btn-primary" type="submit">Start the Conversation</button>
-        <div class="notice show" id="notice">We typically respond within one business day.</div>
+        <div class="notice show" id="notice" role="status" aria-live="polite">We typically respond within one business day.</div>
       </form>
     </div>
   </section>
+  </main>
 
-  <div class="modal-overlay" id="applyModal" aria-hidden="true">
+  <div class="modal-overlay" id="applyModal" aria-hidden="true" inert>
     <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
       <button class="modal-close" type="button" id="modalClose" aria-label="Close">×</button>
       <div class="modal-header">
@@ -1687,21 +1740,23 @@
       </div>
 
       <form id="applyForm">
+        <p class="req-note">Fields marked <span class="req-star" aria-hidden="true">*</span> are required.</p>
+
         <div class="form-grid">
           <label>
-            Full Name
-            <input type="text" name="from_name" placeholder="Your name" required>
+            Full Name <span class="req-star" aria-hidden="true">*</span>
+            <input type="text" name="from_name" autocomplete="name" placeholder="Your name" required>
           </label>
           <label>
-            Email
-            <input type="email" name="from_email" placeholder="you@example.com" required>
+            Email <span class="req-star" aria-hidden="true">*</span>
+            <input type="email" name="from_email" autocomplete="email" placeholder="you@example.com" required>
           </label>
         </div>
 
         <div class="form-grid">
           <label>
-            Phone
-            <input type="text" name="phone" placeholder="(555) 555-5555" required>
+            Phone <span class="req-star" aria-hidden="true">*</span>
+            <input type="tel" name="phone" autocomplete="tel" placeholder="(555) 555-5555" required>
           </label>
           <label>
             Discipline
@@ -1736,7 +1791,7 @@
         </label>
 
         <button class="btn btn-primary" type="submit">Submit My Application</button>
-        <div class="modal-success" id="applySuccess"></div>
+        <div class="modal-success" id="applySuccess" role="status" aria-live="polite"></div>
       </form>
     </div>
   </div>
@@ -1745,7 +1800,7 @@
     <div class="container footer-grid">
       <div>
         <div class="footer-brand">
-          <img src="logo/maximized-care-services-logo-dark.svg" alt="Maximized Care Services logo" />
+          <img src="logo/maximized-care-services-logo-dark.svg" alt="" aria-hidden="true" />
         </div>
         <p>Professional PT, OT, and SLP coverage support for agencies, with opportunities for clinicians interested in working with us.</p>
       </div>
@@ -1756,6 +1811,7 @@
         <a href="#agencies">For Agencies</a>
         <a href="#clinicians">For Clinicians</a>
         <a href="#contact">Contact</a>
+        <a href="accessibility.html">Accessibility</a>
       </div>
 
       <div>
@@ -1860,6 +1916,7 @@
       navToggle.setAttribute('aria-expanded', open ? 'true' : 'false');
       navToggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
       mobileMenu.setAttribute('aria-hidden', open ? 'false' : 'true');
+      mobileMenu.inert = !open;
     }
 
     navToggle.addEventListener('click', () => {
@@ -1876,15 +1933,19 @@
       e.preventDefault();
       const submitBtn = form.querySelector('button[type="submit"]');
       submitBtn.setAttribute('data-loading', '');
+      form.setAttribute('aria-busy', 'true');
       notice.classList.remove('show');
+      notice.textContent = '';
       emailjs.sendForm('service_pxorwlk', 'template_mso8vda', form)
         .then(function() {
           submitBtn.removeAttribute('data-loading');
+          form.removeAttribute('aria-busy');
           notice.textContent = 'Message sent! We typically reply within one business day.';
           notice.classList.add('show');
           form.reset();
         }, function(error) {
           submitBtn.removeAttribute('data-loading');
+          form.removeAttribute('aria-busy');
           notice.textContent = 'Something went wrong. Please try again or email us directly.';
           notice.classList.add('show');
           console.error('EmailJS error:', error);
@@ -1909,12 +1970,14 @@
         modalTitle.textContent = 'Apply as ' + article + ' ' + role;
         disciplineField.value = role;
         applySuccess.classList.remove('show');
+        applySuccess.textContent = '';
         applyForm.reset();
         disciplineField.value = role;
+        applyModal.inert = false;
         applyModal.classList.add('open');
         applyModal.setAttribute('aria-hidden', 'false');
         document.body.style.overflow = 'hidden';
-        // move focus into the dialog
+        // move focus into the dialog — must follow the inert release above
         const firstField = applyForm.querySelector('input:not([readonly]), select, textarea');
         (firstField || modalClose).focus();
       });
@@ -1924,7 +1987,9 @@
       applyModal.classList.remove('open');
       applyModal.setAttribute('aria-hidden', 'true');
       document.body.style.overflow = '';
+      // restore focus before inerting, so focus lands on the trigger rather than <body>
       if (lastFocused) { lastFocused.focus(); lastFocused = null; }
+      applyModal.inert = true;
     }
 
     // Keep keyboard focus trapped inside the dialog while open
@@ -1960,19 +2025,21 @@
       e.preventDefault();
       const applyBtn = applyForm.querySelector('button[type="submit"]');
       applyBtn.setAttribute('data-loading', '');
+      applyForm.setAttribute('aria-busy', 'true');
       applySuccess.classList.remove('show');
+      applySuccess.textContent = '';
       emailjs.sendForm('service_pxorwlk', 'template_ktq38u8', applyForm)
         .then(function() {
           applyBtn.removeAttribute('data-loading');
+          applyForm.removeAttribute('aria-busy');
           applySuccess.innerHTML = '<strong>Thank you for applying!</strong><br>We have received your application and will be in touch if there is a fit.';
           applySuccess.classList.add('show');
           applyForm.reset();
-          setTimeout(function() {
-            closeModal();
-            applySuccess.classList.remove('show');
-          }, 3000);
+          // The dialog stays open until dismissed. An auto-close would destroy the
+          // confirmation before a screen reader finishes reading it.
         }, function(error) {
           applyBtn.removeAttribute('data-loading');
+          applyForm.removeAttribute('aria-busy');
           applySuccess.textContent = 'Something went wrong. Please try again or contact us directly.';
           applySuccess.classList.add('show');
           console.error('EmailJS error:', error);
